@@ -143,15 +143,13 @@
                 <div class="dropdown">
                     <button class="favorite-button">Voir les Chouchous</button>
                     <div class="dropdown-content">
-                        <div>Chouchou 1 de Benoit: Description du chouchou 1 de Benoit.</div>
-                        <div>Chouchou 2 de Benoit: Description du chouchou 2 de Benoit.</div>
                         <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Gautier">
+                            <img src="https://media.licdn.com/dms/image/v2/C4D03AQGjPIXw8SQjpQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1646234300085?e=1748476800&v=beta&t=MDXOTK7PoPIwgWfQKZXRdNp1pPDJCmbSbIUOmTnthNQ" alt="Gautier">
                             <span>Gautier</span>
                             <button class="qualities-button" onclick="showQualities('Gautier')">Qualités & Défauts</button>
                         </div>
                         <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Joffray">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQGKEtgdV2XYuQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1689058193134?e=1748476800&v=beta&t=7-iwPgY2x-FAwvJ5FbTA-Ozo1p9VSTsB9FYgq9v7q6Q" alt="Joffray">
                             <span>Joffray</span>
                             <button class="qualities-button" onclick="showQualities('Joffray')">Qualités & Défauts</button>
                         </div>
@@ -166,16 +164,6 @@
                     <button class="favorite-button">Voir les Chouchous</button>
                     <div class="dropdown-content">
                         <div>En raison d'une indisponibilité, son classement est indisponible pour le moment.</div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Gautier">
-                            <span>Gautier</span>
-                            <button class="qualities-button" onclick="showQualities('Gautier')">Qualités & Défauts</button>
-                        </div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Joffray">
-                            <span>Joffray</span>
-                            <button class="qualities-button" onclick="showQualities('Joffray')">Qualités & Défauts</button>
-                        </div>
                         <div class="add-button" onclick="showAddPopup()">Ajouter un Chouchou</div>
                     </div>
                 </div>
@@ -188,16 +176,6 @@
                     <div class="dropdown-content">
                         <div>Chouchou 1 de Dan: Description du chouchou 1 de Dan.</div>
                         <div>Chouchou 2 de Dan: Description du chouchou 2 de Dan.</div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Gautier">
-                            <span>Gautier</span>
-                            <button class="qualities-button" onclick="showQualities('Gautier')">Qualités & Défauts</button>
-                        </div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Joffray">
-                            <span>Joffray</span>
-                            <button class="qualities-button" onclick="showQualities('Joffray')">Qualités & Défauts</button>
-                        </div>
                         <div class="add-button" onclick="showAddPopup()">Ajouter un Chouchou</div>
                     </div>
                 </div>
@@ -209,16 +187,6 @@
                     <button class="favorite-button">Voir les Chouchous</button>
                     <div class="dropdown-content">
                         <div>Pas de chouchou, elle adore tout le monde.</div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Gautier">
-                            <span>Gautier</span>
-                            <button class="qualities-button" onclick="showQualities('Gautier')">Qualités & Défauts</button>
-                        </div>
-                        <div class="collaborator">
-                            <img src="https://via.placeholder.com/50" alt="Joffray">
-                            <span>Joffray</span>
-                            <button class="qualities-button" onclick="showQualities('Joffray')">Qualités & Défauts</button>
-                        </div>
                         <div class="add-button" onclick="showAddPopup()">Ajouter un Chouchou</div>
                     </div>
                 </div>
@@ -239,9 +207,15 @@
         </div>
     </main>
     <script>
+        let currentDropdown = null;
+
         function toggleDropdown(manager) {
             const dropdownContent = document.querySelector(`.manager:has(> img[alt='Manager ${manager}']) .dropdown-content`);
+            if (currentDropdown && currentDropdown !== dropdownContent) {
+                currentDropdown.style.display = 'none';
+            }
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            currentDropdown = dropdownContent;
         }
 
         function showAddPopup() {
@@ -280,6 +254,7 @@
                         dropdown.style.display = 'none';
                     }
                 });
+                currentDropdown = null;
             }
         }
     </script>
